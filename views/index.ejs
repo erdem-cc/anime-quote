@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Imperial Script', 'Times New Roman', Times, serif;
+        font-size: 40px;
+        color: rgb(152, 78, 91)
+    }
+
+    body {
+        background: url('/assets/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .petal {
+        position: absolute;
+        top: -50px;
+        width: 30px;
+        height: 30px;
+        animation-name: fall;
+        animation-timing-function: linear;
+        pointer-events: none;
+    }
+
+    .envelope-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        height: 310px;
+        position: relative;
+
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+
+    .envelope {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .letter-container {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.403);
+        height: 100vh;
+        width: 100vw;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .letter {
+        position: relative;
+        background: url('/assets/letter.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 512px;
+        height: 384px;
+        display: flex;
+        flex-direction: column;
+        padding: 0 40px;
+        font-family: 'Imperial Script', cursive;
+        color: rgb(152, 78, 91);
+        font-size: 28px;
+        box-sizing: border-box;
+    }
+
+    .letter>h2 {
+        margin-top: 20px;
+        flex-basis: 350px;
+    }
+
+    .letter>p {
+        align-self: flex-end;
+        padding-bottom: 30px;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    h1 {
+        font-size: 100px;
+        color: #e36565;
+        text-shadow: 0 0 10px #FFFFFF;
+        z-index: -1;
+    }
+
+    .cursor {
+        position: relative;
+        margin: 0 auto;
+        border-right: 2px solid rgba(255, 255, 255, .75);
+        font-size: 100px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        transform: translateY(-50%);
+
+    }
+
+    /* Animation */
+    .typewriter-animation {
+        animation:
+            typewriter 4s steps(50) 1s 1 normal both,
+            blinkingCursor 500ms steps(50) infinite normal;
+    }
+
+    @keyframes typewriter {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 450px;
+        }
+    }
+
+    @keyframes blinkingCursor {
+        from {
+            border-right-color: rgba(255, 255, 255, .75);
+        }
+
+        to {
+            border-right-color: transparent;
+        }
+    }
+</style>
+
+<body>
+    <h1 class="cursor typewriter-animation">Anime Quote</h1>
+    <div class="envelope-container">
+        <img class="envelope" src="/assets/envelope-closed.png">
+    </div>
+
+    <div class="letter-container hidden">
+        <div class="letter">
+
+            <h2>
+                <%= content.quote %>
+            </h2>
+            <p>
+                <%= content.character %>
+            </p>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/main.js"></script>
+</body>
+
+</html>
