@@ -2,7 +2,7 @@
 
 This is a simple web project that dynamically displays anime quotes using an external API. It features a typewriter animation and a styled letter background, perfect for themed web presentations.
 
-![Screenshot](/assets/screenshot.png)
+![Screenshot](/public/assets/screenshot.png)
 
 ## 🖼️ Features
 
